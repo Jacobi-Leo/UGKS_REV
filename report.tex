@@ -1,0 +1,129 @@
+\documentclass[hyperref,UTF8,titlepage]{ctexbook}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{float}
+%\usepackage{eumeitem}
+\usepackage[]{graphicx}
+\usepackage{minted}
+%\usepackage{pifont} % this is to provide macro \ding in line 12
+%
+%% \num{10e2}
+%% \mmHg
+%% \SI{4}{\milli\meter}
+%% \gg  % instead of $>\!\!>$
+%
+%
+%%% For footnote style
+%\usepackage[perpage]{footmisc}
+%\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+
+\pagestyle{fancy}
+%\geometry{a4paper, bottom=4cm}
+%\graphicspath{{}}
+\bibliographystyle{plain}
+
+\hypersetup{
+        colorlinks=false,
+        pdftitle={UGKS读书报告},
+        pdfauthor={Z. Y. Liu}}
+
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\mi}{\mathrm{i}}
+\newcommand{\mRe}{\mathit{Re}}
+\newcommand{\mSt}{\mathit{St}}
+\newcommand{\mRo}{\mathit{Ro}}
+\newcommand{\Karman}{K\'arm\'an}
+\newcommand{\diff}{\,\mathrm{d}}
+
+\title{UGKS读书报告}
+\author{刘泽宇}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\part{背景和原理}
+\chapter{问题概述}
+
+\section{CFD 的基本原理}
+
+\section{非平衡流动及其模拟}
+在工程实践中, 有许多涉及到稀薄流动的例子, 比如返回式航天飞行器在进入大
+气层的过程, 微电子机械系统\footnote{Micro-Electro-Mechanical System,
+  MEMS}中的流动,
+化学反应伴随的流动, 以及湍流.
+在稀薄流动中, 传统的 NS 方程不能很好地描述流体的运动, 甚至存在一些用NS
+方程无法解释地现象. NS 方程不能正确描述流动地根本原因在于, 在流动的
+Knudsen 数\footnote{Knudsen 是分子自由程和流动特征尺度之比.}不趋向于零时,
+流体微团并未达到平衡态, 因此推导出NS方程所使用的基本假设不成立. 从流动
+尺度来看, NS方程只在流体动力学尺度上成立, 因为在流体动力学尺度远远大于
+分子自由程, 然而在稀薄流动中, 许多流动结构在尺度上是可以和分子自由程相
+比拟的, 此时流体运动需要在分子动理学尺度上描述, 因此建立在流体动力学尺
+度上的NS方程就难以发挥作用了.
+
+在实际的工程问题中, 流动通常是多尺度的, 因此在流场的不同部分, 流体动力
+学平衡态和分子动理学非平衡态往往是共存的, 也就是说, 流动可能会从强
+稀薄流逐渐变为连续介质流动. 那么在数目有限到网格中模拟整个流场就变得非
+常困难. 在这种条件下, 寻找一种具有内禀多尺度性质的算法就非常重要了.
+UGKS就是这样一种通过对流场直接建模构造的算法.
+
+针对稀薄流动的最为成功的算法是 DSMC 方法, 其他的方法包括直接求解
+Boltzmann 方程和矩方法.
+
+
+
+
+
+\chapter{物理学和数学背景知识}
+
+\section{Boltzmann 方程和气体动力学方法}
+
+\subsection{Boltzmann 方程的推导}
+
+\subsection{BGK 模型}
+
+\section{UGKS 的数学基础}
+
+\subsection{BGK 模型的演化解}
+
+\subsection{离散速度空间}
+
+\part{算法构造和分析}
+\chapter{基本算法}
+
+\part{应用实例}
+
+\part{杂物}
+
+
+
+
+
+
+%% BiBTeX settings
+\bibliography{report}
+\end{document}
+
+%% The simple manual for minted package
+\begin{minted}
+  [
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    bgcolor=LightGray,
+    fontsize=\footnotesize,
+    linenos
+  ]
+  {python}
+  % some Python code
+\end{minted}
+
+\inputminted[firstline=2, lastline=12]{octave}{BitXorMatrix.m}
+
+\mint{html}|<h2>Something <b>here</b></h2>|
+
+%% End %% Actually there are many fabulous features...
